@@ -1,0 +1,14 @@
+number of process : p[0]
+AT: BT: P: p[1]
+AT: BT: P: p[2]
+AT: BT: P: p[3]
+AT: BT: P:
+
+p[0]|3|p[2]|8|p[1]|10|p[3]|13|p[0]|20|
+
+P name	 TT	 WT
+p[2]	1	0	
+p[1]	7	1	
+p[3]	5	2	
+p[0]	20	10	
+avg:	8.25	3.25	
