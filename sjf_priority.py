@@ -37,9 +37,10 @@ for i in range(0,x):
 	process.append(PCB(at,bt))
 
 
-for i in range(1,x):
-	if process[i].bt<process[i-1].bt:
-		process[i],process[i-1]=process[i-1],process[i]
+for i in range(0,x):
+	for j in range(1,x-i):
+		if process[j].bt<process[j-1].bt:
+			process[j],process[j-1]=process[j-1],process[j]
 
 final.append('P..\tTT\tWT\t')
 while remain!=0:

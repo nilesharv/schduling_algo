@@ -20,7 +20,7 @@ class PCB:
 		return
 
 	def __str__ (self):
-		return self.name+'\t'+str(self.tt)+'\t'+str(self.wt)+'\t';
+		return self.name+'\t|'+str(self.tt)+'\t|'+str(self.wt)+'\t|';
 
 
 
@@ -48,11 +48,16 @@ for i in range(0,x):
 		
 		if process[j].p<process[j-1].p:
 			process[j],process[j-1]=process[j-1],process[j]
-
-cpu_cycle=sat;
-print('\n\n')
-final.append('p name\t TT \t BT')
+#for i in range(0,x):
+#	print(process[i].name,process[i].at,process[i].bt,process[i].p)
+#print(sat)
+cpu_cycle=0
+print('\ngannt chart\n\n')
+final.append('\n------ Table------------\n')
+final.append('p name\t| TT \t| BT \t|')
+final.append('=========================')
 count=0
+run=False
 while remain!=0:
 	
 
@@ -65,15 +70,21 @@ while remain!=0:
 		wt=wt+process[count].wt
 		tt=tt+process[count].tt
 		print(process[count].name+'|'+str(cpu_cycle)+'|',end='')
+		run=True
 	
 	count =count+1
 
 	if count==x:
 		count=0
+		if run==False:
+			cpu_cycle=cpu_cycle+1
+			print('|i-'+str(cpu_cycle)+'|',end='')
+		run=False
 
 
 print('\n\n\n')
-final.append('avg: \t'+str(tt/x)+'\t'+str(wt/x)+'\t');
+final.append('=========================')
+final.append('avg: \t|'+str(tt/x)+'\t|'+str(wt/x)+'\t|');
 
 for i in final:
 	print(i);

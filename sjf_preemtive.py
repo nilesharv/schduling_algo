@@ -36,10 +36,10 @@ for i in range(0,x):
 	#print(at,bt)
 	process.append(PCB(at,bt))
 
-
-for i in range(1,x):
-	if process[i].at<process[i-1].at:
-		process[i],process[i-1]=process[i-1],process[i]
+for j in range(0,x):
+	for i in range(1,x-j):
+		if process[i].at<process[i-1].at:
+			process[i],process[i-1]=process[i-1],process[i]
 
 p=-1;
 final.append('P..\tTT\tWT\t')
@@ -55,6 +55,11 @@ while remain!=0:
 		elif process[i].rt<process[smallest].rt and process[i].rt!=0:
 			smallest=i
 		i=i+1
+
+	if smallest==-1:
+		cpu_cycle=cpu_cycle+1
+		print('i|',end='')
+		continue
 	
 	process[smallest].rt=process[smallest].rt-1
 	

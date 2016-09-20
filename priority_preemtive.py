@@ -16,7 +16,7 @@ class PCB:
 		return
 
 	def __str__ (self):
-		return self.name+'\t'+str(self.tt)+'\t'+str(self.wt)+'\t';
+		return self.name+'\t|'+str(self.tt)+'\t|'+str(self.wt)+'\t|';
 
 
 x=int(input('number of process : '))
@@ -34,8 +34,9 @@ for i in range(0,x):
 	bt=int(input('BT: ')) 
 	p=int(input('P: ')) 
 	process.append(PCB(at,bt,p))
-final.append('P name\t TT\t WT')
+final.append('\n\nP name\t| TT\t| WT\t|')
 p=-1;
+print('\n\n------gannt chart----\n\n')
 cpu_cycle=process[0].at;
 while remain!=0:
 	current=-1
@@ -47,14 +48,16 @@ while remain!=0:
 			current=i  		
 	
 		i=i+1
-
+	if current==-1:
+		cpu_cycle=cpu_cycle+1
+		print('|i-'+str(cpu_cycle)+'|',end='')
+		continue
 
 	process[current].rt=process[current].rt-1
 	cpu_cycle=cpu_cycle+1
 
-	if p==-1:
-		p=current
-	elif process[current].rt==0 and p!=current:
+	
+	if process[current].rt==0 and p!=current:
 		print(process[p].name+'|'+str(cpu_cycle-1)+'|',end='')
 		print(process[current].name+'|'+str(cpu_cycle)+'|',end='')
 		p=-1
@@ -63,6 +66,8 @@ while remain!=0:
 		p=-1
 	elif p!=current:
 		print(process[p].name+'|'+str(cpu_cycle-1)+'|',end='')
+		p=current
+	elif p==-1:
 		p=current
 
 	if process[current].rt==0:
@@ -73,7 +78,7 @@ while remain!=0:
 		tt=tt+process[current].tt
 	
 
-
+final.append('-------------------------------------')
 final.append('avg:\t'+str(tt/x)+'\t'+str(wt/x)+'\t')
 
 for i in final:
