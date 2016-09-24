@@ -21,6 +21,7 @@ for i in range(0,x):
 	bt[i]=int(input("enter burst time for p["+str(i)+"]"))
 	rt[i]=bt[i]
 print('\n\n gannt chart')
+
 while remain!=0:
 	#print(cpu_cycle,count)
 	if at[count]<=cpu_cycle and rt[count]>0 and rt[count]<=quantum :
